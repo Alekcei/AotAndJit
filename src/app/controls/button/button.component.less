@@ -1,0 +1,64 @@
+@paddingTopButtom: 10px;
+@colorHover:  #f6851e;
+@colorBase:   #00913b;
+@colorFocusBorder:  #d8d8d8;
+:host {
+    height: 2.5em;
+}
+.button {
+    cursor: pointer;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    height: 2.5em;
+    min-width: 145px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-color: @colorBase;
+    padding:@paddingTopButtom 30px @paddingTopButtom 30px;
+    font-size:1em;
+    color:#ffffff;
+    transition: 0.1s ease-out all;
+    -webkit-transition: 0.1s ease-out all;
+}
+
+.button:hover {
+    background-color: @colorHover;
+}
+.button:focus:not(:hover) {
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2) inset;
+    background-color: @colorBase - 30%;
+}
+.button:active {
+   cursor: pointer;
+   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2) inset;
+}
+.button[disabled]{
+  cursor: no-drop;
+  background: #f2f2f2;
+  color: #005b52;
+}
+.button[disabled]:hover{
+  cursor: no-drop;
+  background: #f2f2f2;
+  color: #005b52;
+}
+
+:host(.light) {
+  & .button{
+    color :@colorBase;
+    border:0.15em solid @colorBase;
+    background-color: #ffffff;
+  }
+  & .button:hover {
+    border-color: @colorHover;
+    color: @colorHover;
+  }
+  &  .button:active {
+    border-color: @colorHover - 20%;
+    color: @colorHover  - 20%;
+  }
+};
+

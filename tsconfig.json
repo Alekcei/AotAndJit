@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "src",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+
+  "angularCompilerOptions": {
+      // For TypeScript 1.8, we have to lay out generated files
+      // in the same source directory with your code.
+      "debug": true,
+      "enableSummariesForJit": true,
+      "alwaysCompileGeneratedCode": true
+    }
+}
