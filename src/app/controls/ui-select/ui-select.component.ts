@@ -1,13 +1,13 @@
 import { Component, Input,AfterViewInit, ViewChild, ElementRef, Output, EventEmitter, ViewEncapsulation, HostListener, forwardRef  } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-
+import { CustomComponent } from '../../decorators.component';
 const UI_SELECT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => UiSelectComponent),
   multi: true
 };
 
-@Component({
+let metaData = {
   selector: 'ui-select',
   template: `
 
@@ -20,15 +20,21 @@ const UI_SELECT_CONTROL_VALUE_ACCESSOR: any = {
       </div>
 
     <div class="popup" *ngIf="on && fromKey.length>0 &&  !disabled">
-          <div  *ngFor="let key of fromKey" (click)="change(key)" class="item">
-            <ng-container *ngIf="comboWhithKey && key">{{key}} - </ng-container>{{from[key]}}
-          </div>
+        <div>
+            <!--  ui-scrollbar  -->
+              <div  *ngFor="let key of fromKey" (click)="change(key)" class="item">
+                <ng-container *ngIf="comboWhithKey && key">{{key}} - </ng-container>{{from[key]}}
+              </div>
+            <!--   /ui-scrollbar  -->
+        </div>
     </div>
 `,
 //,encapsulation: ViewEncapsulation.None
   styleUrls: ['./ui-select.component.less'],
   providers: [UI_SELECT_CONTROL_VALUE_ACCESSOR]
-})
+}
+@Component(metaData)
+@CustomComponent(metaData)
 export class UiSelectComponent implements ControlValueAccessor, AfterViewInit {
     constructor(private elementRef: ElementRef){
 

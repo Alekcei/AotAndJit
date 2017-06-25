@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, HostListener, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-
+import { CustomComponent } from '../../decorators.component';
 const UI_RADIO_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => UiRadioComponent),
@@ -9,7 +9,7 @@ const UI_RADIO_CONTROL_VALUE_ACCESSOR: any = {
 /*
  size = [large, medium, small]
 */
-@Component({
+let metaData = {
   selector: 'ui-radio',
   template: `
   <span class="radio"
@@ -24,8 +24,9 @@ const UI_RADIO_CONTROL_VALUE_ACCESSOR: any = {
   `,
   styleUrls: ['./radio.component.less'],
   providers: [UI_RADIO_CONTROL_VALUE_ACCESSOR]
-})
-//
+}
+@Component(metaData)
+@CustomComponent(metaData)
 export class UiRadioComponent implements ControlValueAccessor {
   private onTouchedCallback = (v: any) => {
   };
